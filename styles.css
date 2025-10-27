@@ -1,11 +1,41 @@
+:root {
+    --brown: rgb(90, 76, 73);
+    --pink: pink;
+    --light-pink: rgb(245, 211, 230);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     background-color: black;
     color: pink;
+}
+
+.scrolling-background {
+    background-image: url(/assets/images/ribbons1.jpg);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    animation: scrollBackground 20s linear infinite;
+}
+
+@keyframes scrollBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100% 0;
+    }
 }
 
 /* UTILS START */
@@ -24,7 +54,98 @@ body {
 }
 
 /* UTILS END */
+.main {
+    height: 65vh;
+    width: 50vh;
+
+    overflow: hidden;
+
+    background-color: white;
+    border-radius: 15px;
+    border: 2px solid pink;
+
+    transition: all 0.3s ease-out;
+}
+
+.bar {
+    height: 12%;
+    width: 100%;
+
+    background-color: var(--brown);
+
+    padding: 5px 0 5px 0;
+    justify-content: space-evenly;
+}
+
+.bar .dots {
+    height: 100%;
+    gap: 2px;
+}
+.bar .dots .dot {
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+    background-color: var(--pink);
+
+    justify-content: space-evenly;
+}
+.bar .search {
+    color: black;
+    background-color: var(--pink);
+    border-radius: 10px;
+    font-size: .6rem;
+    width: 70%;
+    height: 100%;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    padding: 0 20px 0 20px;
+}
+.bar .time {
+    font-size: .5rem;
+    color: white;
+}
+
+.nav {
+    width: 100%;
+    height: 9%;
+    background-color: var(--light-pink);
+
+    justify-content: space-between;
+    padding: 0 6px 0 6px;
+}
+
+.links {
+    gap: 6px;
+}
+
+.hearts {
+    color: black;
+    font-size: 0.6rem;
+    gap: 1px;
+}
+.hartu:hover {
+    color: var(--brown);
+}
+.nav-links {
+    font-size: 0.45rem;
+    color: var(--brown);
+}
+.nav-links:hover {
+    color: black;
+}
 
 .testing {
     height: 100vh;
+}
+
+/* MEDIAS  */
+
+@media screen and (orientation: portrait) {
+    .main {
+        height: 100vw;
+        width: 90vw;
+    }
 }
