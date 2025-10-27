@@ -20,8 +20,12 @@ body {
 
     background-color: black;
     color: pink;
-}
 
+    cursor: url(/assets/images/mini-hana-pointer2.png), auto;
+}
+a {
+    cursor: url(/assets/images/mini-hana-cursor1.png), auto;
+}
 .scrolling-background {
     background-image: url(/assets/images/ribbons1.jpg);
     background-repeat: repeat-x;
