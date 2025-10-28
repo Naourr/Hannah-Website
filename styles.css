@@ -2,6 +2,7 @@
     --brown: rgb(90, 76, 73);
     --pink: pink;
     --light-pink: rgb(245, 211, 230);
+    --gray: rgb(56, 56, 56);
 }
 
 * {
@@ -79,6 +80,10 @@ a {
 
     padding: 5px 0 5px 0;
     justify-content: space-evenly;
+
+    flex-shrink: 0;
+    top: 0px;
+    left: 0px;
 }
 
 .bar .dots {
@@ -119,6 +124,8 @@ a {
 
     justify-content: space-between;
     padding: 0 6px 0 6px;
+    flex-shrink: 0;
+
 }
 
 .links {
@@ -143,7 +150,7 @@ a {
 
 
 .page {
-    height: 100%;
+    height: 85%;
     width: 100%;
     background-image: url(/assets/images/bg.jpg);
     background-repeat: no-repeat;
@@ -151,7 +158,7 @@ a {
     background-size: cover;
 }
 .upper {
-    width: 100%;
+    width: 105%;
     height: 40%;
     /* background-color: aqua; */
 
@@ -173,6 +180,31 @@ a {
     background-size: cover;
     border: 2px solid var(--light-pink);
 }
+
+.status {
+    justify-self: left;
+    position: absolute;
+    top: 23%;
+    left: 20%;
+    font-size: 0.45rem;
+    background-color: white;
+    color: var(--gray);
+    height: fit-content;
+    width: fit-content;
+    border-radius: 6px;
+    padding: 2px 4px;
+}
+
+/* .status::before {
+    content: " ";
+    background-color: white;
+    height: 6px;
+    width: 6px;
+    position: absolute;
+    top: 60%;
+    left: 0%;
+    z-index: -5;
+} */
 
 .banner {
     overflow: hidden;
