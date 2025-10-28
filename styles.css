@@ -141,7 +141,7 @@ a {
     color: var(--brown);
 }
 .nav-links {
-    font-size: 0.45rem;
+    font-size: 0.55rem;
     color: var(--brown);
 }
 .nav-links:hover {
@@ -167,7 +167,7 @@ a {
 }
 .pfp {
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 6%;
     border-radius: 50%;
     height: 38%;
@@ -180,7 +180,16 @@ a {
     background-size: cover;
     border: 2px solid var(--light-pink);
 }
-
+.pfp-dot {
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    position: absolute;
+    top: 48%;
+    left: 18.5%;
+    background-color: lime;
+    border: 1px solid pink;
+}
 .status {
     justify-self: left;
     position: absolute;
@@ -247,7 +256,7 @@ a {
     padding-bottom: 1rem;
 }
 .title-box {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     color: black;
     background-color: var(--light-pink);
     padding: 4px 8px;
@@ -258,8 +267,8 @@ a {
 
 .textbox {
     color: black;
-    font-size: 0.45rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 0.55rem;
+   font-family: Arial, Helvetica, sans-serif;
 
     padding: 0 9px;
 }
