@@ -156,7 +156,24 @@ a {
     /* background-color: aqua; */
 
     padding: 10px;
+    position: relative;
 }
+.pfp {
+    position: absolute;
+    top: 25%;
+    left: 6%;
+    border-radius: 50%;
+    height: 38%;
+    width: auto;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background-image: url(/assets/images/pfp.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid var(--light-pink);
+}
+
 .banner {
     overflow: hidden;
     height: 50%;
