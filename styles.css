@@ -60,8 +60,8 @@ a {
 
 /* UTILS END */
 .main {
-    height: 65vh;
-    width: 50vh;
+    height: 85vh;
+    width: 70vh;
 
     overflow: hidden;
 
@@ -73,7 +73,7 @@ a {
 }
 
 .bar {
-    height: 9%;
+    height: 7%;
     width: 100%;
 
     background-color: var(--brown);
@@ -82,8 +82,6 @@ a {
     justify-content: space-evenly;
 
     flex-shrink: 0;
-    top: 0px;
-    left: 0px;
 }
 
 .bar .dots {
@@ -119,7 +117,7 @@ a {
 
 .nav {
     width: 100%;
-    height: 6%;
+    height: 5%;
     background-color: var(--light-pink);
 
     justify-content: space-between;
@@ -141,7 +139,7 @@ a {
     color: var(--brown);
 }
 .nav-links {
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     color: var(--brown);
 }
 .nav-links:hover {
@@ -150,7 +148,7 @@ a {
 
 
 .page {
-    height: 85%;
+    height: 88%;
     width: 100%;
     background-image: url(/assets/images/bg.jpg);
     background-repeat: no-repeat;
@@ -195,7 +193,7 @@ a {
     position: absolute;
     top: 23%;
     left: 20%;
-    font-size: 0.45rem;
+    font-size: 0.5rem;
     background-color: white;
     color: var(--gray);
     height: fit-content;
@@ -218,8 +216,9 @@ a {
 .banner {
     overflow: hidden;
     height: 50%;
-    width: 100%;
-    border-radius: 5px;
+    width: 95%;
+    border-radius: 6px;
+    margin: 0 10px;
 }
 .banner video {
     width: 100%;
@@ -256,7 +255,7 @@ a {
     padding-bottom: 1rem;
 }
 .title-box {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: black;
     background-color: var(--light-pink);
     padding: 4px 8px;
@@ -267,7 +266,7 @@ a {
 
 .textbox {
     color: black;
-    font-size: 0.55rem;
+    font-size: 0.6rem;
    font-family: Arial, Helvetica, sans-serif;
 
     padding: 0 9px;
