@@ -362,14 +362,20 @@ a {
     border-radius: 6px;
     padding: 6px;
 }
+
 .music-player img {
     width: 100%;
     height: auto;
 }
-.spotify {
-    scale: 0.5;
+.music-player p {
+    color: black;
+    font-size: 0.45rem;
+    text-align: center;
 }
 
+.music-icon {
+    font-size: 1.3rem;
+}
 
 /* MEDIAS  */
 
