@@ -5,6 +5,11 @@
     --gray: rgb(56, 56, 56);
 }
 
+@font-face {
+    font-family: 'chomsky';
+    src: url(/assets/fonts/Chomsky.otf);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -166,7 +171,7 @@ a {
 .pfp {
     position: absolute;
     top: 20%;
-    left: 6%;
+    left: 8%;
     border-radius: 50%;
     height: 38%;
     width: auto;
@@ -178,17 +183,17 @@ a {
     background-size: cover;
     border: 2px solid var(--light-pink);
 }
-.pfp-dot {
-    border-radius: 50%;
-    height: 11px;
-    width: 11px;
+.pfp-sticker {
     position: absolute;
-    top: 48%;
-    left: 18.5%;
-    background-color: lime;
-    border: 1px solid pink;
+    top: 40%;
+    left: 18%;
+    transform: rotate(-10deg);
 }
-.status {
+.pfp-sticker img {
+    height: 6vh;
+    width: auto;
+}
+/* .status {
     justify-self: left;
     position: absolute;
     top: 23%;
@@ -200,7 +205,7 @@ a {
     width: fit-content;
     border-radius: 6px;
     padding: 2px 4px;
-}
+} */
 
 /* .status::before {
     content: " ";
@@ -225,6 +230,44 @@ a {
     height: auto;
     margin-top: 2.5rem;
 }
+
+.below-banner {
+    height: 44%;
+    margin: 1.2rem 0;
+
+    /* background-color: rgba(255, 192, 203, 0.5); */
+    padding: 1rem ;
+}
+
+.name {
+    color: white;
+    font-family: 'chomsky';
+    font-size: 2rem;
+    position: absolute;
+    top: 28%;
+    left: 25%;
+   text-shadow: 0 0 10px black;
+}
+
+.gifs img{
+    width: 100%;
+    height: auto;
+}
+
+/* .left-banner, .mid-banner, .right-banner {
+    flex-grow: 1;
+    gap: 6px;
+}
+.below-banner .title-box {
+    font-size: 0.55rem;
+    border: 1px solid var(--gray);
+    padding: 2px 6px;
+    background-color: white;
+}
+.below-banner .textbox {
+    font-size: 0.5rem; 
+} */
+
 .lower {
     width: 100%;
     height: 60%;
@@ -237,8 +280,13 @@ a {
     background-size: cover;
 
     height: 100%;
-    width: 100%;
-    
+    width: 100%;   
+    border-radius: 6px;
+    /* border: 2px solid var(--brown); */
+}
+
+.gif-row {
+    gap: 4px;
 }
 
 .left-box, .right-box {
@@ -257,17 +305,18 @@ a {
 .title-box {
     font-size: 0.7rem;
     color: black;
-    background-color: var(--light-pink);
+    background-color: var(--pink);
     padding: 4px 8px;
     border-radius: 10px;
     height: fit-content;
     width: fit-content;
+    /* border: 2px solid rgb(0, 0, 0); */
 }
 
 .textbox {
     color: black;
     font-size: 0.6rem;
-   font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     padding: 0 9px;
 }
@@ -277,6 +326,15 @@ a {
     overflow: hidden;
     width: 100%;
     height: auto;
+
+    /* background-color: var(--pink);
+    border: 2px solid rgb(0, 0, 0); */
+    padding: 8px; 
+
+    background-image: url(/assets/images/frame.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* MEDIAS  */
