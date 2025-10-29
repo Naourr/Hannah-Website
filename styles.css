@@ -337,6 +337,40 @@ a {
     background-position: center;
 }
 
+/* INTERESTS.HTML */
+
+
+.left-pane {
+    height: 100%;
+    width: 25%;
+    background-color: var(--light-pink);
+    padding: 1rem;
+    justify-content: flex-start;
+}
+.right-pane {
+    height: 100%;
+    width: 75%;
+    padding: 1rem;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+
+.music-player {
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    border-radius: 6px;
+    padding: 6px;
+}
+.music-player img {
+    width: 100%;
+    height: auto;
+}
+.spotify {
+    scale: 0.5;
+}
+
+
 /* MEDIAS  */
 
 @media screen and (orientation: portrait) {

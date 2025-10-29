@@ -10,4 +10,4 @@ function updateClock() {
 
     time.textContent = `${hour}:${minute}`
 }
-setInterval(updateClock, 5000)
+setInterval(updateClock, 1000)
