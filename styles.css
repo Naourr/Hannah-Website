@@ -400,6 +400,7 @@ a {
     align-items: center;
 
     z-index: 10;
+    aspect-ratio: auto;
 }
 
 .close-btn {
@@ -426,7 +427,7 @@ a {
 
 @media screen and (orientation: portrait) {
     .main {
-        height: 100vw;
+        height: 110vw;
         width: 90vw;
     }
 }
