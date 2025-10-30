@@ -363,6 +363,7 @@ a {
     background-color: var(--light-pink);
     padding: 8px;
     justify-content: flex-start;
+    gap: 10px;
 }
 .right-pane {
     height: 100%;
@@ -485,6 +486,14 @@ a {
     scale: 1.05;
 }
 
+.img-holder {
+    border-radius: 10px;
+    overflow: hidden;
+}
+.img-holder img {
+    width: 100%;
+    height: auto;
+}
 
 /* MEDIAS  */
 
