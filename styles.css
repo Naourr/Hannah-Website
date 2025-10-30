@@ -375,9 +375,10 @@ a {
 
 .img-card {
     border-radius: 10px;
-    background-color: var(--light-pink);
     overflow: hidden;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sub-page.right-pane .title-box {
