@@ -182,12 +182,14 @@ a {
     background-position: center;
     background-size: cover;
     border: 2px solid var(--light-pink);
+    pointer-events: all;
 }
 .pfp-sticker {
     position: absolute;
     top: 40%;
     left: 18%;
     transform: rotate(-10deg);
+    pointer-events: none;
 }
 .pfp-sticker img {
     height: 6vh;
@@ -353,6 +355,7 @@ a {
     padding: 1rem;
     justify-content: flex-start;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .music-player {
@@ -374,7 +377,49 @@ a {
 }
 
 .music-icon {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+}
+
+.row-box img {
+    height: auto;
+    width: 100%;
+}
+
+/* img fullscreen stuff */
+
+.image.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 95vh;
+    width: 95vw;
+    margin: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10;
+}
+
+.close-btn {
+    font-size:1.52rem;
+    border-radius: 8px;
+    padding: 3px 12px;
+    border: 2px solid white;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    position: fixed;
+    top: 6px;
+    right: 6px;
+
+    display: none;
+    z-index: 11;
+}
+
+.close-btn.active {
+    display: flex;
 }
 
 /* MEDIAS  */
