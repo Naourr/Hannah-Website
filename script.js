@@ -67,79 +67,90 @@ function getRandFromArray(arr) {
     const randomIndex = Math.floor(scaledNumber);
     return arr[randomIndex];
 }
-
-(function () {
+document.addEventListener('DOMContentLoaded', () => {
   const music_player = document.querySelector('#music-player');
   const music_source = document.querySelector('#music-source');
 
   if (!music_player) {
-    console.error('❌ No #music-player found.');
+    console.error('❌ #music-player not found');
     return;
   }
 
-  console.log('✅ Music player found.');
-
-  // Get current src
-  const getSrc = () => {
-    if (music_source && music_source.getAttribute('src')) return music_source.getAttribute('src');
-    if (music_player.getAttribute('src')) return music_player.getAttribute('src');
-    const childSrc = music_player.querySelector('source[src]');
-    return childSrc ? childSrc.getAttribute('src') : null;
-  };
+  const getSrc = () => (
+    (music_source && music_source.getAttribute('src')) ||
+    music_player.getAttribute('src') ||
+    (music_player.querySelector('source[src]')?.getAttribute('src')) ||
+    null
+  );
 
   let src = getSrc();
   const keyTime = () => 'musicTime::' + (src || 'unknown');
   const keySrc = 'musicSrc';
 
-  // Restore playback position
-  const restoreTime = () => {
-    src = getSrc();
+  let restored = false;
+
+  function restoreTimePersistent() {
     const savedSrc = localStorage.getItem(keySrc);
-    const savedTime = localStorage.getItem(keyTime());
-    if (savedSrc === src && savedTime) {
-      try {
-        music_player.currentTime = parseFloat(savedTime);
-        console.log('⏩ Restored to', music_player.currentTime);
-      } catch (e) {
-        console.warn('⚠️ Could not restore time:', e);
+    const savedTime = parseFloat(localStorage.getItem(keyTime()));
+    if (!savedSrc || savedSrc !== src || isNaN(savedTime)) return;
+
+    let tries = 0;
+    const tryRestore = () => {
+      if (music_player.readyState > 0 && music_player.duration > 0) {
+        try {
+          music_player.currentTime = Math.min(savedTime, music_player.duration - 0.2);
+          restored = true;
+          console.log(`⏩ Restored at ${music_player.currentTime.toFixed(2)}s`);
+        } catch (e) {
+          console.warn('⚠️ Could not set currentTime:', e);
+        }
+      } else if (tries < 12 && !restored) {
+        tries++;
+        setTimeout(tryRestore, 250);
       }
-    }
+    };
+    tryRestore();
+  }
+
+  // Always re-evaluate src in case it loaded later
+  const whenReady = () => {
+    src = getSrc();
+    if (src) restoreTimePersistent();
   };
 
-  // Save time every few seconds
+  // Ensure timing works across page loads
+  if (music_player.readyState > 0) {
+    whenReady();
+  } else {
+    music_player.addEventListener('loadedmetadata', whenReady, { once: true });
+  }
+
+  // Save progress safely (avoid overwriting too early)
+  let lastSave = 0;
   music_player.addEventListener('timeupdate', () => {
-    if (!isNaN(music_player.currentTime) && src) {
+    const now = Date.now();
+    if (!isNaN(music_player.currentTime) && src && now - lastSave > 1000) {
       localStorage.setItem(keyTime(), music_player.currentTime);
       localStorage.setItem(keySrc, src);
+      lastSave = now;
     }
   });
 
-  // Restore time when ready
-  music_player.addEventListener('loadeddata', restoreTime);
-
-  // Desktop works fine — main issue is mobile autoplay blocking
-  // So we only trigger play after interaction *if paused*
-  const tryPlay = () => {
+  // Mobile Chrome fix: require user gesture once
+  document.addEventListener('click', () => {
     if (music_player.paused) {
-      music_player.play().then(() => {
-        console.log('▶️ Playing after tap');
-      }).catch(err => {
-        console.warn('⚠️ Autoplay blocked:', err);
-      });
+      music_player.play().catch(err => console.warn('⚠️ Autoplay blocked:', err));
     }
-  };
-
-  // Chrome mobile fix: only request play after user tap once
-  document.addEventListener('click', tryPlay, { once: true });
-
-  // Don’t auto-play on load — let the browser handle it
-  // That avoids resetting time on Firefox
+  }, { once: true });
 
   music_player.addEventListener('error', (e) => {
     console.error('❌ Audio error:', e);
     if (music_player.error) console.error(music_player.error);
   });
-})();
+});
+
+
+
 
 
 
