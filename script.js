@@ -36,12 +36,42 @@ if (close_btn) {
 const music = document.querySelector('.music-player audio')
 const music_icon = document.querySelector('.music-icon')
 
-music_icon.addEventListener('click', () => {
-    if (music.paused) {
-        music.play() 
-        music_icon.innerHTML = '■'
-    } else {
-        music.pause()
-        music_icon.innerHTML = '▶'
-    }
+if (music_icon) {
+    music_icon.addEventListener('click', () => {
+        if (music.paused) {
+            music.play() 
+            music_icon.innerHTML = '■'
+        } else {
+            music.pause()
+            music_icon.innerHTML = '▶'
+        }
+    })
+}
+
+
+
+const sounds = ['/assets/audios/yummy.mp3', '/assets/audios/nomx3.mp3', '/assets/audios/mm-chavez.mp3', '/assets/audios/mm-chezburger.mp3', '/assets/audios/pizza.mp3'];
+
+function clicked() {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+
+    const mp3Path = getRandFromArray(sounds)
+
+    audioSource.src = mp3Path;
+    audioPlayer.load();
+    audioPlayer.volume = 0.5
+    audioPlayer.play();
+}
+
+document.addEventListener('click', () => {
+    clicked()
 })
+
+function getRandFromArray(arr) {
+    const randomNumber = Math.random();
+    const scaledNumber = randomNumber * arr.length;
+    const randomIndex = Math.floor(scaledNumber);
+    return arr[randomIndex];
+}
+

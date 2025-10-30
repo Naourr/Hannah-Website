@@ -28,6 +28,7 @@ body {
     color: pink;
 
     cursor: url(/assets/images/mini-hana-pointer2.png), auto;
+    scroll-behavior: smooth;
 }
 a {
     cursor: url(/assets/images/mini-hana-cursor1.png), auto;
@@ -105,7 +106,7 @@ a {
     color: black;
     background-color: var(--pink);
     border-radius: 10px;
-    font-size: .6rem;
+    font-size: .55rem;
     width: 70%;
     height: 100%;
 
@@ -175,14 +176,15 @@ a {
     border-radius: 50%;
     height: 38%;
     width: auto;
-    aspect-ratio: 1/1;
     overflow: hidden;
     background-image: url(/assets/images/pfp.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     border: 2px solid var(--light-pink);
-    pointer-events: all;
+    object-fit: contain;
+    aspect-ratio: 1/1;
+    pointer-events: none;
 }
 .pfp-sticker {
     position: absolute;
@@ -313,6 +315,7 @@ a {
     height: fit-content;
     width: fit-content;
     /* border: 2px solid rgb(0, 0, 0); */
+    scroll-snap-align: start;
 }
 
 .textbox {
@@ -357,6 +360,7 @@ a {
     overflow-y: scroll;
     overflow-x: hidden;
     gap: 10px;
+    scroll-snap-type: proximity;
 }
 
 .music-player {
@@ -402,6 +406,15 @@ a {
     overflow: hidden;
 
 }
+
+.sub-page.right-pane .title-box {
+
+    margin-top: 1rem;
+}
+.sub-page.right-pane .title-box:first-child {
+    margin-top: 4px;
+}
+
 /* img fullscreen stuff */
 
 .image.active {
