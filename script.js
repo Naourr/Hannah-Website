@@ -67,14 +67,10 @@ function getRandFromArray(arr) {
     const randomIndex = Math.floor(scaledNumber);
     return arr[randomIndex];
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   const music_player = document.querySelector('#music-player');
   const music_source = document.querySelector('#music-source');
-
-  if (!music_player) {
-    console.error('❌ #music-player not found');
-    return;
-  }
 
   const getSrc = () => (
     (music_source && music_source.getAttribute('src')) ||
@@ -100,9 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           music_player.currentTime = Math.min(savedTime, music_player.duration - 0.2);
           restored = true;
-          console.log(`⏩ Restored at ${music_player.currentTime.toFixed(2)}s`);
+          console.log(`Restored at ${music_player.currentTime.toFixed(2)}s`);
         } catch (e) {
-          console.warn('⚠️ Could not set currentTime:', e);
+          console.warn('Could not set currentTime:', e);
         }
       } else if (tries < 12 && !restored) {
         tries++;
@@ -112,20 +108,17 @@ document.addEventListener('DOMContentLoaded', () => {
     tryRestore();
   }
 
-  // Always re-evaluate src in case it loaded later
   const whenReady = () => {
     src = getSrc();
     if (src) restoreTimePersistent();
   };
 
-  // Ensure timing works across page loads
   if (music_player.readyState > 0) {
     whenReady();
   } else {
     music_player.addEventListener('loadedmetadata', whenReady, { once: true });
   }
 
-  // Save progress safely (avoid overwriting too early)
   let lastSave = 0;
   music_player.addEventListener('timeupdate', () => {
     const now = Date.now();
@@ -136,17 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Mobile Chrome fix: require user gesture once
   document.addEventListener('click', () => {
     if (music_player.paused) {
-      music_player.play().catch(err => console.warn('⚠️ Autoplay blocked:', err));
+      music_player.play().catch(err => console.warn('Autoplay blocked:', err));
     }
   }, { once: true });
-
-  music_player.addEventListener('error', (e) => {
-    console.error('❌ Audio error:', e);
-    if (music_player.error) console.error(music_player.error);
-  });
 });
 
 
