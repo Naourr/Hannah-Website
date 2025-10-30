@@ -67,71 +67,70 @@ function getRandFromArray(arr) {
     const randomIndex = Math.floor(scaledNumber);
     return arr[randomIndex];
 }
-
 document.addEventListener('DOMContentLoaded', () => {
-  const music_player = document.querySelector('#music-player');
-  const music_source = document.querySelector('#music-source');
+    const music_player = document.querySelector('#music-player');
+    const music_source = document.querySelector('#music-source');
 
-  const getSrc = () => (
-    (music_source && music_source.getAttribute('src')) ||
-    music_player.getAttribute('src') ||
-    (music_player.querySelector('source[src]')?.getAttribute('src')) ||
-    null
-  );
+    const getSrc = () => (
+        (music_source && music_source.getAttribute('src')) ||
+        music_player.getAttribute('src') ||
+        (music_player.querySelector('source[src]')?.getAttribute('src')) ||
+        null
+    );
 
-  let src = getSrc();
-  const keyTime = () => 'musicTime::' + (src || 'unknown');
-  const keySrc = 'musicSrc';
+    let src = getSrc();
+    const keyTime = () => 'musicTime::' + (src || 'unknown');
+    const keySrc = 'musicSrc';
 
-  let restored = false;
+    let restored = false;
 
-  function restoreTimePersistent() {
-    const savedSrc = localStorage.getItem(keySrc);
-    const savedTime = parseFloat(localStorage.getItem(keyTime()));
-    if (!savedSrc || savedSrc !== src || isNaN(savedTime)) return;
+    function restoreTimePersistent() {
+        const savedSrc = localStorage.getItem(keySrc);
+        const savedTime = parseFloat(localStorage.getItem(keyTime()));
+        if (!savedSrc || savedSrc !== src || isNaN(savedTime)) return;
 
-    let tries = 0;
-    const tryRestore = () => {
-      if (music_player.readyState > 0 && music_player.duration > 0) {
-        try {
-          music_player.currentTime = Math.min(savedTime, music_player.duration - 0.2);
-          restored = true;
-          console.log(`Restored at ${music_player.currentTime.toFixed(2)}s`);
-        } catch (e) {
-          console.warn('Could not set currentTime:', e);
-        }
-      } else if (tries < 12 && !restored) {
-        tries++;
-        setTimeout(tryRestore, 250);
-      }
+        let tries = 0;
+        const tryRestore = () => {
+            if (music_player.readyState > 0 && music_player.duration > 0) {
+                try {
+                    music_player.currentTime = Math.min(savedTime, music_player.duration - 0.2);
+                    restored = true;
+                    console.log(`Restored at ${music_player.currentTime.toFixed(2)}s`);
+                } catch (e) {
+                    console.warn('Could not set currentTime:', e);
+                }
+            } else if (tries < 12 && !restored) {
+                tries++;
+                setTimeout(tryRestore, 250);
+            }
+        };
+        tryRestore();
+    }
+
+    const whenReady = () => {
+        src = getSrc();
+        if (src) restoreTimePersistent();
     };
-    tryRestore();
-  }
 
-  const whenReady = () => {
-    src = getSrc();
-    if (src) restoreTimePersistent();
-  };
-
-  if (music_player.readyState > 0) {
-    whenReady();
-  } else {
-    music_player.addEventListener('loadedmetadata', whenReady, { once: true });
-  }
-
-  let lastSave = 0;
-  music_player.addEventListener('timeupdate', () => {
-    const now = Date.now();
-    if (!isNaN(music_player.currentTime) && src && now - lastSave > 1000) {
-      localStorage.setItem(keyTime(), music_player.currentTime);
-      localStorage.setItem(keySrc, src);
-      lastSave = now;
+    if (music_player.readyState > 0) {
+        whenReady();
+    } else {
+        music_player.addEventListener('loadedmetadata', whenReady, { once: true });
     }
-  });
 
-  document.addEventListener('click', () => {
-    if (music_player.paused) {
-      music_player.play().catch(err => console.warn('Autoplay blocked:', err));
-    }
-  }, { once: true });
+    let lastSave = 0;
+    music_player.addEventListener('timeupdate', () => {
+        const now = Date.now();
+        if (!isNaN(music_player.currentTime) && src && now - lastSave > 1000) {
+            localStorage.setItem(keyTime(), music_player.currentTime);
+            localStorage.setItem(keySrc, src);
+            lastSave = now;
+        }
+    });
+
+    document.addEventListener('click', () => {
+        if (music_player.paused) {
+            music_player.play().catch(err => console.warn('Autoplay blocked:', err));
+        }
+    }, { once: true });
 });
