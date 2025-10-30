@@ -38,8 +38,7 @@ const music_icon = document.querySelector('.music-icon')
 
 music_icon.addEventListener('click', () => {
     if (music.paused) {
-        music.play()
-        // music_icon.innerHTML = '\u23F8\uFE0E'
+        music.play() 
         music_icon.innerHTML = '■'
     } else {
         music.pause()
