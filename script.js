@@ -1,6 +1,4 @@
-
 const time = document.querySelector('.time')
-
 function updateClock() {
     let now = new Date();
     let hour = now.getHours();
@@ -16,7 +14,6 @@ setInterval(updateClock, 1000)
 const images = document.querySelectorAll('.image')
 const active_image = document.querySelector('.image.active')
 const close_btn = document.querySelector('.close-btn')
-
 images.forEach(img => {
     img.addEventListener('click', () => {
         images.forEach(i => i.classList.remove('active'))
@@ -34,7 +31,6 @@ if (close_btn) {
 
 const music = document.querySelector('.music-player audio')
 const music_icon = document.querySelector('.music-icon')
-
 if (music_icon) {
     music_icon.addEventListener('click', () => {
         if (music.paused) {
@@ -47,10 +43,7 @@ if (music_icon) {
     })
 }
 
-
-
 const sounds = ['/assets/audios/yummy.mp3', '/assets/audios/nomx3.mp3', '/assets/audios/mm-chavez.mp3', '/assets/audios/mm-chezburger.mp3', '/assets/audios/pizza.mp3'];
-
 function clicked() {
     const audioPlayer = document.getElementById('audioPlayer');
     const audioSource = document.getElementById('audioSource');

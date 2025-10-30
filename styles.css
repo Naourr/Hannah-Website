@@ -65,6 +65,7 @@ a {
 }
 
 /* UTILS END */
+
 .main {
     height: 85vh;
     width: 70vh;
@@ -199,30 +200,6 @@ a {
     height: 6vh;
     width: auto;
 }
-/* .status {
-    justify-self: left;
-    position: absolute;
-    top: 23%;
-    left: 20%;
-    font-size: 0.5rem;
-    background-color: white;
-    color: var(--gray);
-    height: fit-content;
-    width: fit-content;
-    border-radius: 6px;
-    padding: 2px 4px;
-} */
-
-/* .status::before {
-    content: " ";
-    background-color: white;
-    height: 6px;
-    width: 6px;
-    position: absolute;
-    top: 60%;
-    left: 0%;
-    z-index: -5;
-} */
 
 .banner {
     overflow: hidden;
@@ -241,7 +218,6 @@ a {
     height: 44%;
     margin: 1.2rem 0;
 
-    /* background-color: rgba(255, 192, 203, 0.5); */
     padding: 1rem ;
 }
 
@@ -270,19 +246,6 @@ a {
 .image:hover {
     scale: 1.05;
 }
-/* .left-banner, .mid-banner, .right-banner {
-    flex-grow: 1;
-    gap: 6px;
-}
-.below-banner .title-box {
-    font-size: 0.55rem;
-    border: 1px solid var(--gray);
-    padding: 2px 6px;
-    background-color: white;
-}
-.below-banner .textbox {
-    font-size: 0.5rem; 
-} */
 
 .lower {
     width: 100%;
@@ -298,7 +261,6 @@ a {
     height: 100%;
     width: 100%;   
     border-radius: 6px;
-    /* border: 2px solid var(--brown); */
 }
 
 .gif-row {
@@ -326,7 +288,6 @@ a {
     border-radius: 10px;
     height: fit-content;
     width: fit-content;
-    /* border: 2px solid rgb(0, 0, 0); */
     scroll-snap-align: start;
 }
 
@@ -344,8 +305,6 @@ a {
     width: 100%;
     height: auto;
 
-    /* background-color: var(--pink);
-    border: 2px solid rgb(0, 0, 0); */
     padding: 8px; 
 
     background-image: url(/assets/images/frame.jpg);
@@ -364,6 +323,7 @@ a {
     padding: 8px;
     justify-content: flex-start;
     gap: 10px;
+    overflow-y: scroll;
 }
 .right-pane {
     height: 100%;
