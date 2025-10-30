@@ -13,7 +13,6 @@ function updateClock() {
 }
 setInterval(updateClock, 1000)
 
-
 const images = document.querySelectorAll('.image')
 const active_image = document.querySelector('.image.active')
 const close_btn = document.querySelector('.close-btn')
