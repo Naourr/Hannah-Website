@@ -67,9 +67,6 @@ a {
 /* UTILS END */
 
 .main {
-    height: 85vh;
-    width: 70vh;
-
     overflow: hidden;
 
     background-color: white;
@@ -77,6 +74,9 @@ a {
     border: 2px solid pink;
 
     transition: all 0.3s ease-out;
+
+    aspect-ratio: 2/3;
+    height: min(90vh, 90vw * 3/2);
 }
 
 .bar {
@@ -454,13 +454,4 @@ a {
 .img-holder img {
     width: 100%;
     height: auto;
-}
-
-/* MEDIAS  */
-
-@media screen and (orientation: portrait) {
-    .main {
-        height: 120vw;
-        width: 90vw;
-    }
 }
