@@ -139,12 +139,15 @@ a {
 
 .hearts {
     color: black;
-    font-size: 0.75rem;
+    font-size: 1rem;
     gap: 3px;
 }
 .hartu:hover {
     color: var(--brown);
     scale: 1.15;
+}
+.hartu.active {
+    color: white;
 }
 .nav-links {
     font-size: 0.6rem;

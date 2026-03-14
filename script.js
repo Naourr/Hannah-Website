@@ -21,6 +21,13 @@ images.forEach(img => {
         close_btn.classList.add('active')
     })
 })
+const hearts = document.querySelectorAll(".hartu")
+hearts.forEach(heart => {
+    heart.addEventListener('click', () => {
+        heart.classList.toggle("active")
+    })
+})
+
 
 if (close_btn) {
     close_btn.addEventListener('click', () => {
