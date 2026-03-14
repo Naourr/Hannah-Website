@@ -60,7 +60,7 @@ function clicked() {
 
     audioSource.src = mp3Path;
     audioPlayer.load();
-    // audioPlayer.volume = 0.9
+    audioPlayer.volume = .5
     audioPlayer.play();
 }
 

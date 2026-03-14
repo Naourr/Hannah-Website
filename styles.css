@@ -141,6 +141,7 @@ a {
     color: black;
     font-size: 1rem;
     gap: 3px;
+    user-select: none;
 }
 .hartu:hover {
     color: var(--brown);
