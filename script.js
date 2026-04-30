@@ -38,6 +38,7 @@ if (close_btn) {
 
 const music = document.querySelector('.music-player audio')
 const music_icon = document.querySelector('.music-icon')
+music.volume = 0.25
 if (music_icon) {
     music_icon.addEventListener('click', () => {
         if (music.paused) {
